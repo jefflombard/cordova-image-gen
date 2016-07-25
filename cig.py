@@ -25,6 +25,9 @@ def check_input_image_size(image):
     else:
         return (False, "Image is not large enough. Please try again with an image that is at least 192x192.")
 
+def splash(color):
+    pass
+
 # Setup
 # Input
 # Transform
@@ -32,19 +35,10 @@ def check_input_image_size(image):
 
 # Main
 
-def icon():
-
+def icon(image):
     # Setup/Load
     with open('icons.json') as data:
         json = load(data)
-
-    # File Input -> Checks for valid image file
-    try:
-        image = Image.open(argv[1])
-    except:
-        # If I/O Error is through invalid image is passed as sys arg.
-        print("Please select a valid image file")
-        return False
 
     # Check if image size is big enough.
     print("Checking Image Size...")
@@ -74,4 +68,16 @@ def icon():
             icon_instance.save('output/'+platform+"/"+icon)
 
 
-icon()
+def main():
+    # File Input -> Checks for valid image file
+    try:
+        image = Image.open(argv[1])
+    except:
+        # If I/O Error is through invalid image is passed as sys arg.
+        print("Please select a valid image file")
+        return False
+
+    icon(image)
+
+
+main()
