@@ -79,5 +79,7 @@ def main():
 
     icon(image)
 
+    if len(argv) > 2 and argv[2] == 'withSplash':
+        pass
 
 main()
